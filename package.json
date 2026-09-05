@@ -8,6 +8,7 @@
     "generate:projects": "node scripts/generate-projects.mjs",
     "sync:resume": "node scripts/sync-resume.mjs",
     "sync:content": "node scripts/sync-content.mjs",
+    "audit:live": "node scripts/audit-live.mjs",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview"

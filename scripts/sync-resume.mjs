@@ -7,7 +7,7 @@
 // public/Muhammad-Hussain-Resume.pdf untouched and exits 0, so a flaky
 // network call never breaks the deploy.
 
-import { writeFileSync } from "fs";
+import { writeFileSync, existsSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -30,4 +30,5 @@ async function main() {
 
 main().catch((err) => {
   console.error("Resume sync failed, keeping existing public/Muhammad-Hussain-Resume.pdf:", err);
+  if (!existsSync(OUTPUT_PATH)) process.exitCode = 1; // no baseline to fall back on — fail loudly
 });
