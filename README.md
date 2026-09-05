@@ -2,7 +2,7 @@
 
 Personal portfolio site for Muhammad Hussain, a MERN stack developer. Built with React, TypeScript, Vite, Tailwind CSS, and Framer Motion, and deployed to GitHub Pages.
 
-**Live:** https://muhammadhussain2004.github.io/
+**Live:** https://muhammadhussain2004.github.io/My-Portfolio/
 
 ## Stack
 
