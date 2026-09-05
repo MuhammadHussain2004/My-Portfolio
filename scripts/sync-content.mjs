@@ -15,7 +15,7 @@
 // and exits 0, so it never breaks the deploy — the site just keeps showing
 // the last good content until the next successful run.
 
-import { writeFileSync, readFileSync, existsSync } from "fs";
+import { writeFileSync, existsSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 

@@ -30,7 +30,7 @@ export default function Projects() {
                   </div>
                   <div className="aspect-[16/10] overflow-hidden bg-bg-raised">
                     <img
-                      src={project.image}
+                      src={`${import.meta.env.BASE_URL}${project.image}`}
                       alt={`${project.title} screenshot`}
                       loading="lazy"
                       className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"

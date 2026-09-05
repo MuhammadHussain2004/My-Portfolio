@@ -8,9 +8,13 @@ export default function Skills() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading index="02" kicker="What I work with" title="Skills" />
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-wrap gap-4">
           {skills.map((group, i) => (
-            <Reveal key={group.category} delay={i * 0.06} className="bg-bg-card p-7">
+            <Reveal
+              key={group.category}
+              delay={i * 0.06}
+              className="w-full rounded-md border border-line bg-bg-card p-7 sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]"
+            >
               <p className="mb-5 font-mono text-xs uppercase tracking-[0.25em] text-accent">
                 {group.category}
               </p>

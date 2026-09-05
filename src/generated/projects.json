@@ -3,7 +3,7 @@
     "slug": "muhammadhussain-mern-10pshine",
     "title": "NoteFlow — 10Pearls Internship Project",
     "description": "Built during my MERN Stack Development internship at 10Pearls (10Shine Program): a full-stack notes application with JWT authentication, email verification, and full CRUD, plus data import/export and user profile management.",
-    "image": "/projects-auto/muhammadhussain-mern-10pshine.png",
+    "image": "projects-auto/muhammadhussain-mern-10pshine.png",
     "tags": [
       "React",
       "Node.js",
@@ -19,7 +19,7 @@
     "slug": "complain-management-system-mern",
     "title": "Smart Complaint Management System (MERN Stack)",
     "description": "A role-based complaint-management platform: citizens file complaints, staff move them through a Pending → In Progress → Resolved/Rejected lifecycle, and admins approve accounts and oversee the queue — across 15 REST endpoints guarded by JWT auth and bcrypt password hashing.",
-    "image": "/projects-auto/complain-management-system-mern.png",
+    "image": "projects-auto/complain-management-system-mern.png",
     "tags": [
       "React",
       "Vite",
@@ -36,7 +36,7 @@
     "slug": "buildbot",
     "title": "BuildVolt — PC-Build Recommendation SaaS",
     "description": "Our final year project, built with a 2-person team: a deterministic compatibility engine that infers CPU/RAM/PSU specs from catalog text and assembles budget-capped, safety-checked PC builds — plus a WordPress/WooCommerce plugin and a React + TypeScript store dashboard for catalog sync, CSV import, and analytics.",
-    "image": "/projects-auto/buildbot.png",
+    "image": "projects-auto/buildbot.png",
     "tags": [
       "Node.js",
       "Express",
@@ -54,7 +54,7 @@
     "slug": "shopco-ecommerce",
     "title": "Shop.co E-Commerce Platform (MERN Stack)",
     "description": "A pixel-faithful rebuild of a community Figma template as a full MERN application — product filtering, search and pagination, reviews, promo-code validation, and order placement, backed by a MongoDB Atlas-seeded catalog.",
-    "image": "/projects-auto/shopco-ecommerce.png",
+    "image": "projects-auto/shopco-ecommerce.png",
     "tags": [
       "React",
       "Vite",
@@ -70,7 +70,7 @@
     "slug": "students-records-app",
     "title": "Student Records App",
     "description": "A type-safe full-stack app (Next.js App Router, TypeScript, MongoDB/Mongoose) with a typed Student schema and REST-style API routes for full CRUD, plus an admin dashboard surfacing live enrollment metrics — total, active, inactive, new-this-month — with search and end-to-end form validation.",
-    "image": "/projects-auto/students-records-app.png",
+    "image": "projects-auto/students-records-app.png",
     "tags": [
       "Next.js",
       "TypeScript",
@@ -85,7 +85,7 @@
     "slug": "full-stack-auth",
     "title": "Full-Stack Auth",
     "description": "A self-contained authentication reference app: signup, login, JWT-protected profile routes, and persisted sessions — the pattern I reuse as the backbone for every app that needs real users.",
-    "image": "/projects-auto/full-stack-auth.png",
+    "image": "projects-auto/full-stack-auth.png",
     "tags": [
       "React",
       "Vite",

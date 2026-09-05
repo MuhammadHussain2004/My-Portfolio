@@ -11,7 +11,7 @@ const links = [
   { href: "#contact", label: "Contact" },
 ];
 
-const RESUME_URL = "/Muhammad-Hussain-Resume.pdf";
+const RESUME_URL = `${import.meta.env.BASE_URL}Muhammad-Hussain-Resume.pdf`;
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,8 +31,11 @@ export default function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
-        <a href="#top" className="font-heading text-lg font-semibold tracking-tight text-ink">
-          <span className="text-accent">/</span>hussain
+        <a href="#top" className="flex items-center gap-2.5 font-heading text-lg font-semibold tracking-tight text-ink">
+          <span className="flex h-8 w-8 items-center justify-center rounded-md border border-accent/30 bg-accent/10 font-mono text-xs font-bold tracking-tighter text-accent">
+            MH
+          </span>
+          hussain
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
