@@ -1,21 +1,21 @@
 {
-  "tagline": "Software engineer specializing in full-stack MERN development and multi-service systems.",
+  "tagline": "Software engineer with a strong foundation in data structures, object-oriented design, and database systems, and particular depth in full-stack MERN development.",
   "secondaryRoles": [
     "Full-Stack Developer",
     "MERN Stack Specialist"
   ],
   "bio": [
-    "I am a software engineer with a strong academic foundation in Computer Science from Sindh Madressatul Islam University, graduating with a 3.7 CGPA. My core technical grounding spans data structures, object-oriented design, and database systems, which I apply to architect clean, scalable multi-service solutions including deterministic recommendation systems and role-based access-control platforms.",
-    "Complementing my computer science background, I have hands-on engineering experience across the MERN stack as well as Java, C/C++, and PHP. Through my internship at 10Pearls, NAVTTC-affiliated training at NextSkill, and IBM professional certification, I build production-grade web applications utilizing rigorous testing with Mocha and Chai, code quality analysis via SonarQube, and modern Git workflows."
+    "I am a software engineer with a strong foundation in data structures, object-oriented design, and database systems, bringing particular depth in full-stack MERN development across React, Node.js, Express, and MongoDB. Throughout my academic journey and independent projects, I have designed multi-service systems, including a deterministic recommendation engine and a role-based access-control platform, while also applying production experience across Java and C/C++.",
+    "Backed by an IBM certification in full-stack JavaScript development and hands-on experience through internships and technical training, I build scalable applications with modern tools. I work comfortably with Git and GitHub for version control, practice test-driven development, and focus on delivering clean, reliable software solutions."
   ],
   "quickFacts": {
     "basedIn": "Karachi, Pakistan",
-    "education": "BS in Computer Science, Sindh Madressatul Islam University",
+    "education": "BS in Computer Science",
     "focus": "Full-Stack MERN Development",
     "currently": "Modern Web & App Development at SMIT"
   },
   "cgpaStat": "3.7/4.0",
-  "contactHeading": "Interested in collaborating or discussing an engineering opportunity?",
+  "contactHeading": "Interested in working together on software engineering projects?",
   "skills": [
     {
       "category": "Languages",
@@ -98,42 +98,46 @@
       "period": "Sep 2022 - Jun 2026",
       "title": "Bachelor of Science in Computer Science",
       "place": "Sindh Madressatul Islam University",
-      "description": "I earned my degree with a 3.7/4.0 CGPA, completing extensive coursework in data structures, OOP, database systems, software engineering, and computer networks.",
+      "description": "I studied core relevant coursework including Data Structures, Object-Oriented Programming, Database Systems, Software Engineering, Computer Networks, Operating Systems, and Mobile App Development.",
       "tag": "Education"
     },
     {
       "period": "Sep 2026",
       "title": "IBM Full-Stack JavaScript Developer (Professional Certificate)",
       "place": "IBM, Coursera",
-      "description": "I achieved a professional certification validating end-to-end full-stack JavaScript skills, architectures, and development practices.",
-      "tag": "Certificate"
+      "description": "I earned my professional certificate in full-stack JavaScript development through comprehensive coursework.",
+      "tag": "Certificate",
+      "link": "https://coursera.org/verify/professional-cert/ACOM3SC87IX4",
+      "linkLabel": "Verify"
     },
     {
       "period": "Mar 2026 - Present",
       "title": "Modern Web & App Development",
       "place": "Saylani Mass IT Training (SMIT)",
-      "description": "I am undertaking practical training in modern web and mobile application engineering technologies and paradigms.",
+      "description": "I am currently expanding my technical capabilities through structured training in modern web and mobile application development.",
       "tag": "Training"
     },
     {
       "period": "Jun 2026 - Sep 2026",
       "title": "Full Stack Development Trainee",
       "place": "NextSkill Institute",
-      "description": "I completed an IBM-aligned, NAVTTC-affiliated program where I built and version-controlled front-end and e-commerce web applications using React and Git.",
-      "tag": "Training"
+      "description": "I completed a NAVTTC-affiliated Full Stack Development training program with an IBM-aligned curriculum, progressing from fundamentals to React-based multi-page and e-commerce applications. I built and version-controlled front-end projects using Git and GitHub for iterative submission and review.",
+      "tag": "Experience"
     },
     {
       "period": "Apr 2026 - May 2026",
       "title": "MERN Stack Development Intern",
       "place": "10Pearls - 10Shine Program",
-      "description": "I designed the data model and secured REST API for a full-stack Notes app, authored Mocha and Chai test suites, and addressed issues using SonarQube static analysis.",
-      "tag": "Experience"
+      "description": "I designed and implemented the data model and REST API for a full-stack Notes application, including JWT authentication, email verification, and full CRUD operations. I also authored unit and integration tests and resolved issues flagged by SonarQube static analysis.",
+      "tag": "Experience",
+      "link": "https://github.com/MuhammadHussain2004/resume/blob/master/certificates/10Pearls_10Shine_Internship_Certificate.pdf",
+      "linkLabel": "Certificate"
     },
     {
       "period": "Sep 2022 - Present",
       "title": "Independent Study",
       "place": "Self-Directed Learning & Development",
-      "description": "I designed and deployed more than 10 full-stack MERN applications, putting theoretical computer science principles and test-driven development into continuous practice.",
+      "description": "I designed, built, and deployed 10+ full-stack MERN applications independently, applying my coursework in data structures, OOP, and database design to real projects while practicing collaborative workflows.",
       "tag": "Independent"
     }
   ]

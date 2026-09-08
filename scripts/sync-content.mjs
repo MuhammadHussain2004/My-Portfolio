@@ -66,6 +66,8 @@ const RESPONSE_SCHEMA = {
           place: { type: "string" },
           description: { type: "string" },
           tag: { type: "string" },
+          link: { type: "string" },
+          linkLabel: { type: "string" },
         },
         required: ["period", "title", "place", "description", "tag"],
       },
@@ -86,7 +88,7 @@ Rules:
 - "cgpaStat": exactly as stated in the resume, formatted like "3.7/4.0".
 - "contactHeading": one short question inviting contact, matching the resume's professional framing (e.g. mentioning the primary role/specialization). No em dashes.
 - "skills": mirror the resume's own "Technical Skills" category structure and items as closely as possible — do not reorganize into different categories than the resume uses, do not drop or add categories, but you may rename a category to be more portfolio-friendly if the resume's label is very terse (e.g. keep "MERN / Full-Stack" style labels if present).
-- "timeline": one entry per Education, Certification, and Experience entry in the resume (skip "Self-Directed Learning" only if it has no concrete dates or evidence to build a real entry from). "tag" is a short 1-2 word label: "Education", "Certificate", "Training", "Experience", or "Independent". "description" is 1-2 sentences, first-person, based only on that resume entry's own bullet points. Order most-recent-first is fine but don't worry about perfect chronological sorting.
+- "timeline": one entry per Education, Certification, and Experience entry in the resume (skip "Self-Directed Learning" only if it has no concrete dates or evidence to build a real entry from). "tag" is a short 1-2 word label: "Education", "Certificate", "Training", "Experience", or "Independent". "description" is 1-2 sentences, first-person, based only on that resume entry's own bullet points. Order most-recent-first is fine but don't worry about perfect chronological sorting. The resume's .tex source contains \\href{URL}{label} commands (e.g. next to a certification or job title) — if an entry's heading line contains one, extract the URL into "link" and a short 1-2 word button label (e.g. "Verify", "Certificate") into "linkLabel"; omit both fields entirely for entries with no such link. Never invent a link that isn't literally present in the source.
 - Output ONLY raw JSON matching the given schema. No markdown fences, no commentary.`;
 
 async function resolveModel() {

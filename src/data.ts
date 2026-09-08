@@ -56,6 +56,8 @@ export type TimelineItem = {
   place: string;
   description: string;
   tag: string;
+  link?: string;
+  linkLabel?: string;
 };
 
 export const timeline: TimelineItem[] = generatedContent.timeline;

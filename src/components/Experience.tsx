@@ -1,3 +1,4 @@
+import { SquareArrowOutUpRight } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import { timeline } from "../data";
@@ -30,6 +31,17 @@ export default function Experience() {
                   <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
                     {item.description}
                   </p>
+                  {item.link && (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-3 inline-flex items-center gap-1.5 font-mono text-[13px] text-accent hover:underline"
+                    >
+                      <SquareArrowOutUpRight size={14} />
+                      {item.linkLabel || "View"}
+                    </a>
+                  )}
                 </li>
               </Reveal>
             ))}
