@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  repository_dispatch:
+    types: [resume_updated]
   schedule:
     # Re-scores every public repo daily so a new (or newly-improved) project
     # can automatically enter the showcase without a push to this repo.

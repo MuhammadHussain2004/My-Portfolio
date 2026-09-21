@@ -22,6 +22,8 @@ const OWNER = "MuhammadHussain2004";
 const OUTPUT_JSON = path.join(ROOT, "src/generated/projects.json");
 const STATS_JSON = path.join(ROOT, "src/generated/stats.json");
 const SCREENSHOT_DIR = path.join(ROOT, "public/projects-auto");
+const SHARED_ANALYSIS_URL =
+  "https://raw.githubusercontent.com/MuhammadHussain2004/resume/master/data/repo-analysis.json";
 
 const overrides = JSON.parse(readFileSync(path.join(__dirname, "project-overrides.json"), "utf8"));
 const MAX_PROJECTS = overrides.maxProjects ?? 6;
@@ -95,6 +97,27 @@ function humanize(name) {
     .filter(Boolean)
     .map((w) => (w.length <= 3 && w === w.toUpperCase() ? w : w[0].toUpperCase() + w.slice(1)))
     .join(" ");
+}
+
+function evidenceDescription(analysis) {
+  const features = (analysis.feature_domains || []).slice(0, 4);
+  const technologies = (analysis.technologies || []).slice(0, 5);
+  const kind = analysis.full_stack ? "Full-stack application" : "Software project";
+  const featureText = features.length
+    ? ` implementing ${features.join(", ")}`
+    : " built from a substantive multi-file codebase";
+  const stackText = technologies.length ? ` with ${technologies.join(", ")}` : "";
+  return `${kind}${featureText}${stackText}.`;
+}
+
+async function fetchSharedAnalysis() {
+  const res = await fetch(SHARED_ANALYSIS_URL, { signal: AbortSignal.timeout(30000) });
+  if (!res.ok) throw new Error(`Shared analysis fetch failed: ${res.status}`);
+  const data = await res.json();
+  if (!Array.isArray(data.projects) || data.projects.length < MAX_PROJECTS) {
+    throw new Error("Shared analysis has too few ranked projects");
+  }
+  return data.projects;
 }
 
 async function analyzeRepo(repo) {
@@ -207,7 +230,7 @@ async function main() {
   // Ground-truth "shipped full-stack apps" count — every live repo with
   // real evidence of both a frontend and a backend, not just the 6 shown
   // in the showcase. Drives an About-section stat with no LLM involved.
-  const fullStackRepoCount = scored.filter((s) => s.frontendSignal && s.backendSignal).length;
+  let fullStackRepoCount = scored.filter((s) => s.frontendSignal && s.backendSignal).length;
   console.log(`${fullStackRepoCount} live repos have real full-stack signal.`);
 
   // Genuinely full-stack repos (both a frontend and a backend detected)
@@ -215,7 +238,7 @@ async function main() {
   // those to fill every slot does a live, decent-scoring but not-fully-
   // full-stack repo backfill the remainder — the showcase always tries to
   // show MAX_PROJECTS, it just prefers full-stack work for every slot it can.
-  const qualified = scored
+  let qualified = scored
     .filter((s) => s.score >= MIN_SCORE)
     .sort((a, b) => {
       const aFull = a.frontendSignal && a.backendSignal ? 1 : 0;
@@ -225,6 +248,28 @@ async function main() {
       return new Date(b.repo.pushed_at) - new Date(a.repo.pushed_at);
     })
     .slice(0, MAX_PROJECTS);
+
+  try {
+    const shared = await fetchSharedAnalysis();
+    const repoByUrl = new Map(repos.map((repo) => [repo.html_url.replace(/\/$/, ""), repo]));
+    qualified = shared
+      .filter((analysis) => analysis.eligible && analysis.overall_rank <= MAX_PROJECTS)
+      .sort((a, b) => a.overall_rank - b.overall_rank)
+      .map((analysis) => ({
+        repo: repoByUrl.get(analysis.url.replace(/\/$/, "")),
+        score: analysis.score,
+        tags: analysis.technologies || [],
+        analysis,
+      }))
+      .filter((item) => item.repo);
+    fullStackRepoCount = shared.filter((item) => item.full_stack).length;
+    console.log(
+      "Using shared resume-repository ranking:",
+      qualified.map((q) => `${q.analysis.overall_rank}. ${q.repo.name}`),
+    );
+  } catch (err) {
+    console.warn(`Shared ranking unavailable (${err.message}); using local scoring fallback.`);
+  }
 
   if (qualified.length === 0) throw new Error("No repo qualified — refusing to overwrite baseline");
 
@@ -236,7 +281,7 @@ async function main() {
   const browser = await chromium.launch();
   const results = [];
   let rank = 0;
-  for (const { repo, tags } of qualified) {
+  for (const { repo, tags, analysis } of qualified) {
     rank++;
     const slug = repo.name.toLowerCase().replace(/[^a-z0-9-]/g, "-");
     const override = overrides.overrides?.[repo.name] || {};
@@ -244,11 +289,11 @@ async function main() {
     try {
       const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
       try {
-        await page.goto(repo.homepage, { waitUntil: "networkidle", timeout: 20000 });
+        await page.goto(repo.homepage || repo.html_url, { waitUntil: "networkidle", timeout: 20000 });
       } catch {
         // Some sites never go fully idle (polling, websockets) — a loaded
         // DOM is good enough for a screenshot.
-        await page.goto(repo.homepage, { waitUntil: "load", timeout: 20000 });
+        await page.goto(repo.homepage || repo.html_url, { waitUntil: "load", timeout: 20000 });
       }
       await page.waitForTimeout(1200);
       await page.screenshot({ path: path.join(SCREENSHOT_DIR, `${slug}.png`) });
@@ -260,17 +305,17 @@ async function main() {
     results.push({
       slug,
       title: override.title || humanize(repo.name),
-      description:
-        override.description ||
-        (repo.description && repo.description.length > 30
-          ? repo.description
-          : `Full-stack project built with ${tags.slice(0, 3).join(", ") || repo.language}.`),
+      description: analysis
+        ? evidenceDescription(analysis)
+        : (repo.description && repo.description.length > 30
+            ? repo.description
+            : `Full-stack project built with ${tags.slice(0, 3).join(", ") || repo.language}.`),
       // Base-relative (no leading slash): this script runs outside Vite and
       // has no idea what base path the site is deployed under, so the path
       // prefix is applied at render time instead — see Projects.tsx.
       image: `projects-auto/${slug}.png`,
-      tags: override.tags || tags,
-      live: repo.homepage,
+      tags: analysis ? tags.slice(0, 6) : (override.tags || tags),
+      live: repo.homepage || undefined,
       code: repo.html_url,
       featured: override.featured ?? rank <= 2,
     });
