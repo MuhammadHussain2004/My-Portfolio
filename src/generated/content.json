@@ -26,10 +26,12 @@
         "HTML5",
         "CSS3",
         "Python",
+        "PHP",
         "Java",
         "C++",
         "C",
-        "SQL"
+        "SQL",
+        "Shell"
       ]
     },
     {
@@ -53,7 +55,8 @@
         "Context API",
         "Redux Toolkit",
         "React Redux",
-        "Vite"
+        "Vite",
+        "Framer Motion"
       ]
     },
     {
