@@ -22,13 +22,14 @@
       "items": [
         "JavaScript",
         "TypeScript",
+        "JSX",
+        "HTML5",
+        "CSS3",
         "Python",
-        "PHP",
         "Java",
         "C++",
         "C",
-        "SQL",
-        "Shell"
+        "SQL"
       ]
     },
     {
@@ -42,21 +43,45 @@
       ]
     },
     {
-      "category": "MERN / Full-Stack",
+      "category": "Frontend",
       "items": [
         "React.js",
+        "React DOM",
         "Next.js",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
+        "React Router",
         "Tailwind CSS",
+        "Context API",
         "Redux Toolkit",
-        "Framer Motion"
+        "React Redux",
+        "Vite"
       ]
     },
     {
-      "category": "Databases",
+      "category": "Backend / APIs",
       "items": [
+        "Node.js",
+        "Express.js",
+        "Socket.IO",
+        "bcrypt",
+        "JWT",
+        "CORS",
+        "dotenv",
+        "Multer",
+        "Node.js http",
+        "fs/promises",
+        "path",
+        "JSON"
+      ]
+    },
+    {
+      "category": "Databases / ORM",
+      "items": [
+        "MongoDB",
+        "MongoDB Atlas",
+        "Mongoose",
+        "PostgreSQL",
+        "pg",
+        "Sequelize",
         "MySQL",
         "Turso",
         "SQL Server"
@@ -65,9 +90,15 @@
     {
       "category": "Developer Tools",
       "items": [
+        "npm",
         "Git",
         "GitHub",
         "GitHub Actions",
+        "Docker",
+        "Dockerfile",
+        "Nodemon",
+        "ESLint",
+        "React Hooks ESLint",
         "Postman",
         "SonarQube",
         "Mocha/Chai",
