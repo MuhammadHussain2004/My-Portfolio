@@ -22,9 +22,6 @@
       "items": [
         "JavaScript",
         "TypeScript",
-        "JSX",
-        "HTML5",
-        "CSS3",
         "Python",
         "PHP",
         "Java",
@@ -47,8 +44,10 @@
     {
       "category": "Frontend",
       "items": [
+        "HTML5",
+        "CSS3",
+        "JSX",
         "React.js",
-        "React DOM",
         "Next.js",
         "React Router",
         "Tailwind CSS",
@@ -64,16 +63,11 @@
       "items": [
         "Node.js",
         "Express.js",
+        "REST APIs",
         "Socket.IO",
-        "bcrypt",
-        "JWT",
+        "JWT Authentication",
         "CORS",
-        "dotenv",
-        "Multer",
-        "Node.js http",
-        "fs/promises",
-        "path",
-        "JSON"
+        "File Uploads"
       ]
     },
     {
@@ -83,7 +77,6 @@
         "MongoDB Atlas",
         "Mongoose",
         "PostgreSQL",
-        "pg",
         "Sequelize",
         "MySQL",
         "Turso",
@@ -93,15 +86,11 @@
     {
       "category": "Developer Tools",
       "items": [
-        "npm",
         "Git",
         "GitHub",
         "GitHub Actions",
         "Docker",
-        "Dockerfile",
-        "Nodemon",
         "ESLint",
-        "React Hooks ESLint",
         "Postman",
         "SonarQube",
         "Mocha/Chai",
