@@ -23,16 +23,14 @@
         "JavaScript",
         "TypeScript",
         "Python",
-        "PHP",
         "Java",
         "C++",
         "C",
-        "SQL",
-        "Shell"
+        "SQL"
       ]
     },
     {
-      "category": "Core CS",
+      "category": "Core Computer Science",
       "items": [
         "Data Structures",
         "Object-Oriented Programming",
@@ -42,7 +40,7 @@
       ]
     },
     {
-      "category": "Frontend",
+      "category": "Frontend Technologies",
       "items": [
         "HTML5",
         "CSS3",
@@ -53,13 +51,11 @@
         "Tailwind CSS",
         "Context API",
         "Redux Toolkit",
-        "React Redux",
-        "Vite",
-        "Framer Motion"
+        "Vite"
       ]
     },
     {
-      "category": "Backend / APIs",
+      "category": "Backend Technologies",
       "items": [
         "Node.js",
         "Express.js",
@@ -71,7 +67,7 @@
       ]
     },
     {
-      "category": "Databases / ORM",
+      "category": "Databases and ORMs",
       "items": [
         "MongoDB",
         "MongoDB Atlas",
@@ -99,10 +95,12 @@
       ]
     },
     {
-      "category": "Deployment / Cloud",
+      "category": "Cloud and Deployment",
       "items": [
         "Vercel",
-        "GitHub Pages"
+        "GitHub Pages",
+        "Railway",
+        "Netlify"
       ]
     },
     {
