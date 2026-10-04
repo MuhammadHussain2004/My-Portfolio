@@ -23,6 +23,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const OUTPUT_JSON = path.join(ROOT, "src/generated/content.json");
 const RESUME_TEX_URL = "https://raw.githubusercontent.com/MuhammadHussain2004/resume/master/Muhammad_Hussain_Resume.tex";
+const HISTORY_URL = "https://raw.githubusercontent.com/MuhammadHussain2004/resume/master/docs/CONVERSATION_HISTORY.md";
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com";
@@ -79,6 +80,9 @@ const RESPONSE_SCHEMA = {
 const SYSTEM_PROMPT = `You are adapting an already-finalized, human-approved resume into structured JSON for a software engineer's portfolio website. The resume text given to you is the single source of truth.
 
 Rules:
+- A PROJECT HISTORY excerpt accompanies the resume. Use it to preserve the user's
+  synchronization preferences and earlier presentation decisions, but never
+  treat history as evidence for a new fact; the resume source is authoritative.
 - Do not add, invent, or infer any fact, employer, project, date, or skill that is not explicitly present in the resume text. This is a reformatting and tone-adaptation task, not a content-generation task.
 - The resume is written in third-person/telegraphic resume style. Rewrite it into natural first-person prose for a portfolio website (e.g. "I designed..." not "Designed...").
 - "bio": exactly 2 paragraphs. Paragraph 1 leads with the professional identity and CS/engineering foundation from the Summary section. Paragraph 2 covers production experience (internship, certifications) and tools/working style. Keep it warm but precise, no fluff, no buzzword salad.
@@ -117,10 +121,10 @@ async function resolveModel() {
   return candidates.sort((a, b) => rank(a) - rank(b));
 }
 
-async function callGemini(model, resumeTex) {
+async function callGemini(model, resumeTex, conversationHistory) {
   const payload = {
     systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-    contents: [{ role: "user", parts: [{ text: `RESUME (.tex source):\n\n${resumeTex}` }] }],
+    contents: [{ role: "user", parts: [{ text: `PROJECT HISTORY (persistent context; do not use as factual evidence):\n\n${conversationHistory}\n\nRESUME (.tex source; authoritative facts):\n\n${resumeTex}` }] }],
     generationConfig: {
       maxOutputTokens: 8192,
       temperature: 0.3,
@@ -184,6 +188,14 @@ async function main() {
   const resumeTex = await resumeRes.text();
   if (resumeTex.length < 500) throw new Error(`Resume source suspiciously short (${resumeTex.length} chars)`);
 
+  let conversationHistory = "(Conversation history unavailable; follow the resume source and rules above.)";
+  try {
+    const historyRes = await fetch(HISTORY_URL, { signal: AbortSignal.timeout(30000) });
+    if (historyRes.ok) conversationHistory = (await historyRes.text()).slice(-12000);
+  } catch (err) {
+    console.warn(`Conversation history unavailable; continuing with resume source: ${err.message}`);
+  }
+
   const models = await resolveModel();
   console.log(`Gemini model candidates (best first): ${models.join(", ")}`);
 
@@ -191,7 +203,7 @@ async function main() {
   let usedModel = null;
   for (const model of models) {
     try {
-      raw = await callGemini(model, resumeTex);
+      raw = await callGemini(model, resumeTex, conversationHistory);
       if (raw) {
         usedModel = model;
         break;
