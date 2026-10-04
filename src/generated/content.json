@@ -1,11 +1,11 @@
 {
-  "tagline": "Software engineer specializing in full-stack MERN development, deterministic systems, and database design.",
+  "tagline": "Software Engineer and full-stack MERN developer building reliable, database-backed web applications.",
   "secondaryRoles": [
     "Full-Stack Developer",
     "MERN Stack Specialist"
   ],
   "bio": [
-    "I am a software engineer with a rigorous foundation in data structures, object-oriented design, and database systems, holding a Bachelor of Science in Computer Science with a 3.7/4.0 CGPA. My core expertise is in full-stack MERN development across React, Node.js, Express, and MongoDB, with hands-on experience architecting deterministic recommendation engines, role-based access-control systems, and solutions built in Java and C/C++.",
+    "I am a software engineer and full-stack MERN developer with a rigorous foundation in data structures, object-oriented design, and database systems, holding a Bachelor of Science in Computer Science with a 3.7/4.0 CGPA. I design RESTful APIs, database-backed applications, deterministic recommendation engines, and role-based access-control systems with React, Node.js, Express, MongoDB, and MySQL.",
     "Through my software engineering internship at 10Pearls and formal full-stack development training, I have engineered production REST APIs, implemented JWT authentication, and maintained high code quality with Mocha, Chai, and SonarQube. As an IBM-certified full-stack JavaScript developer, I combine disciplined test-driven methodologies and modern developer tooling to deliver reliable, performant web applications."
   ],
   "quickFacts": {
