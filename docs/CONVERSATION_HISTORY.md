@@ -50,6 +50,7 @@ This file is a durable project-memory record of the work discussed in the AI cha
 - The change was pushed to `main` in commit `bc28ed5`.
 - Portfolio lint/build passed after the change.
 - The resume layout was then refined again to keep the improved breathing room while fitting the complete resume on one page. The resume workflow confirmed the final PDF as one page and dispatched this portfolio deployment.
+- 2026-10-05: The resume was tightened after a visual review so the complete Technical Skills section remains visible on one page. All required sections and ATS-relevant evidence were retained; the final PDF was visually checked and confirmed as one page by workflow `37238089789` (compiled PDF commit `a2c26c0`). The resume workflow uploaded the PDF to Drive and dispatched portfolio/profile synchronization.
 
 ## Operational rules for future assistants
 
