@@ -49,9 +49,11 @@ This file is a durable project-memory record of the work discussed in the AI cha
 - The portfolio fallback narrative was aligned with the resume's improved software-engineering summary.
 - The change was pushed to `main` in commit `bc28ed5`.
 - Portfolio lint/build passed after the change.
+- The resume layout was then refined again to keep the improved breathing room while fitting the complete resume on one page. The resume workflow confirmed the final PDF as one page and dispatched this portfolio deployment.
 
 ## Operational rules for future assistants
 
+- After every future chat task that changes this ecosystem, append a dated entry to this file and mirror the same update in the resume repository's `docs/CONVERSATION_HISTORY.md`. Record what changed, why, validation results, and commit/workflow IDs.
 - Read this file, `AGENTS.md`, and `GEMINI.md` before editing.
 - Update the resume source first when a fact belongs to the professional profile, then let portfolio generation consume it.
 - Keep generated JSON as a safe fallback, never as an unexplained second source of truth.
