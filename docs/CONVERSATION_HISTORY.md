@@ -53,6 +53,7 @@ This file is a durable project-memory record of the work discussed in the AI cha
 - 2026-10-05: The resume was tightened after a visual review so the complete Technical Skills section remains visible on one page. All required sections and ATS-relevant evidence were retained; the final PDF was visually checked and confirmed as one page by workflow `37238089789` (compiled PDF commit `a2c26c0`). The resume workflow uploaded the PDF to Drive and dispatched portfolio/profile synchronization.
 - 2026-10-05: Resume section spacing was refined to remove excessive bottom whitespace while preserving readable heading, entry, and bullet gaps. The final rendered PDF remains one page with all content visible (resume workflow `37239391694`, compiled PDF commit `50a0a21`). Google Drive upload and portfolio/profile dispatch completed; the local Windows sync agent refreshed the `D:\general data` and OneDrive copies.
 - 2026-10-05: Persistent history is now passed to the portfolio Gemini adapter as preference/context, and the portfolio guidance requires every AI editor to read and mirror this file with the resume repository. The resume source remains the sole factual source; history prevents regression of user preferences and synchronization rules.
+- 2026-10-05: The local Windows sync agent now skips an unmounted optional `G:` virtual Drive path immediately, while still updating `D:\general data` and OneDrive. This keeps explicit post-change synchronization fast and retry-safe.
 
 ## Operational rules for future assistants
 
