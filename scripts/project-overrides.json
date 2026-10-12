@@ -8,6 +8,11 @@
       "description": "Our final year project, built with a 2-person team: a deterministic compatibility engine that infers CPU/RAM/PSU specs from catalog text and assembles budget-capped, safety-checked PC builds — plus a WordPress/WooCommerce plugin and a React + TypeScript store dashboard for catalog sync, CSV import, and analytics.",
       "tags": ["Node.js", "Express", "Turso (libSQL)", "React", "TypeScript", "WordPress/WooCommerce", "JWT"]
     },
+    "nodemart": {
+      "title": "NodeMart Product Marketplace (MERN)",
+      "description": "A full-stack product marketplace with JWT-authenticated accounts and owner-scoped product CRUD. Supports image uploads to Cloudinary, product search, price filters, sorting, and pagination, with React/Vite and an Express/MongoDB API deployed on Vercel.",
+      "tags": ["React", "Vite", "Express", "MongoDB", "Mongoose", "JWT", "Cloudinary"]
+    },
     "Complain-Management-System-MERN": {
       "title": "Smart Complaint Management System (MERN Stack)",
       "description": "A role-based complaint-management platform: citizens file complaints, staff move them through a Pending → In Progress → Resolved/Rejected lifecycle, and admins approve accounts and oversee the queue — across 15 REST endpoints guarded by JWT auth and bcrypt password hashing.",

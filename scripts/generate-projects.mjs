@@ -305,16 +305,16 @@ async function main() {
     results.push({
       slug,
       title: override.title || humanize(repo.name),
-      description: analysis
+      description: override.description || (analysis
         ? evidenceDescription(analysis)
         : (repo.description && repo.description.length > 30
             ? repo.description
-            : `Full-stack project built with ${tags.slice(0, 3).join(", ") || repo.language}.`),
+            : `Full-stack project built with ${tags.slice(0, 3).join(", ") || repo.language}.`)),
       // Base-relative (no leading slash): this script runs outside Vite and
       // has no idea what base path the site is deployed under, so the path
       // prefix is applied at render time instead — see Projects.tsx.
       image: `projects-auto/${slug}.png`,
-      tags: analysis ? tags.slice(0, 6) : (override.tags || tags),
+      tags: override.tags || (analysis ? tags.slice(0, 6) : tags),
       live: repo.homepage || undefined,
       code: repo.html_url,
       featured: override.featured ?? rank <= 2,
