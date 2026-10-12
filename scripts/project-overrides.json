@@ -11,7 +11,7 @@
     "nodemart": {
       "title": "NodeMart Product Marketplace (MERN)",
       "description": "A full-stack product marketplace with JWT-authenticated accounts and owner-scoped product CRUD. Supports image uploads to Cloudinary, product search, price filters, sorting, and pagination, with React/Vite and an Express/MongoDB API deployed on Vercel.",
-      "tags": ["React", "Vite", "Express", "MongoDB", "Mongoose", "JWT", "Cloudinary"]
+      "tags": ["React", "Vite", "Express", "MongoDB", "Mongoose", "JWT", "Multer", "Cloudinary"]
     },
     "Complain-Management-System-MERN": {
       "title": "Smart Complaint Management System (MERN Stack)",
