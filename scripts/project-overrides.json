@@ -1,7 +1,7 @@
 {
   "maxProjects": 6,
   "minScore": 3,
-  "excludeSlugs": ["paradise-nursery", "Wanderly-Travel-Recommendation", "MuhammadHussain2004.github.io"],
+  "excludeSlugs": ["paradise-nursery", "Wanderly-Travel-Recommendation", "MuhammadHussain2004.github.io", "resume", "My-Portfolio", "MuhammadHussain2004"],
   "overrides": {
     "buildbot": {
       "title": "BuildVolt — PC-Build Recommendation SaaS",

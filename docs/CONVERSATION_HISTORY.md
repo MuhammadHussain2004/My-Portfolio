@@ -16,6 +16,8 @@ This file is a durable project-memory record of the work discussed in the AI cha
 - The user wanted the resume, portfolio, GitHub profile README, Google Drive, OneDrive, and local copies to remain current with minimum manual work.
 - Routine GitHub pushes and scheduled automation should do the routine work; explicit changes are requested in chat.
 
+- Live desktop/mobile portfolio audit found no console errors, failed page requests, or broken internal anchors. All project demos, GitHub/proof links, and the resume PDF returned HTTP 200. LinkedIn rejected automated HEAD checks with 405/999, which is inconclusive rather than a confirmed broken link; the portfolio audit now reports that separately and passes when all verifiable checks pass. Portfolio operating guidance and the local-score fallback exclusion list were updated to prevent stale metadata or profile/resume repos entering project cards.
+
 ## Canonical workspace
 
 - Parent workspace: `D:\Programming-Development\auto-sync-profiles`

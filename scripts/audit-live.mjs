@@ -3,15 +3,15 @@
 // internal anchors, and dead external/project/resume links. Run manually
 // with `npm run audit:live` whenever you want a full health check.
 //
-// Note: LinkedIn returns 999 to any non-browser request (its anti-bot
-// response), so a LinkedIn link "failing" here is expected and not a real
-// problem — verify those manually in an actual browser if ever in doubt.
+// LinkedIn can reject automated HEAD requests with 405 or 999. Those are
+// inconclusive, so the audit reports them separately from broken links.
 import { chromium } from "playwright";
 
 const URL = "https://muhammadhussain2004.github.io/My-Portfolio/";
 const browser = await chromium.launch();
 
 let hasIssues = false;
+const unverifiedLinks = [];
 
 for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
   const page = await browser.newPage({ viewport });
@@ -52,6 +52,11 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
       try {
         const res = await fetch(link, { method: "HEAD", redirect: "follow", signal: AbortSignal.timeout(15000) });
         const status = res.status;
+        if (new globalThis.URL(link).hostname.endsWith("linkedin.com") && (status === 405 || status === 999)) {
+          console.log(`  NOTE ${status} ${link} (LinkedIn blocks automated HEAD checks)`);
+          unverifiedLinks.push(link);
+          continue;
+        }
         const ok = status < 400;
         console.log(`  ${ok ? "OK " : "BAD"} ${status} ${link}`);
         if (!ok) hasIssues = true;
@@ -64,5 +69,6 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
 }
 
 await browser.close();
+if (unverifiedLinks.length) console.log(`\n${unverifiedLinks.length} external link(s) were inconclusive because the host blocked HEAD requests.`);
 console.log(hasIssues ? "\n>>> ISSUES FOUND" : "\n>>> ALL CLEAR");
 process.exit(hasIssues ? 1 : 0);

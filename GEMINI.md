@@ -16,9 +16,10 @@
 - **GitHub**: [https://github.com/MuhammadHussain2004](https://github.com/MuhammadHussain2004)
 - **LinkedIn**: [https://www.linkedin.com/in/muhammad-hussain-khan-lodhi-139261252](https://www.linkedin.com/in/muhammad-hussain-khan-lodhi-139261252)
 - **Education**: BS Computer Science (CGPA: 3.7/4.0)
-- **Key Verified Certifications**:
-  - **10Pearls MERN Stack Development Internship** (10Shine program) — Certificate link integrated in timeline.
-  - **IBM / Coursera Full Stack Software Developer Professional Certificate** (Coursera ID: `ACOM3SC87IX4`) — Verification link integrated in timeline.
+- **Credentials and proof**:
+  - **10Pearls MERN Stack Development Internship** (10Shine program) is work experience; its proof link is labeled `Verify`.
+  - **IBM / Coursera Full-Stack JavaScript Developer Professional Certificate** (Coursera ID: `ACOM3SC87IX4`) has a `Certificate` link.
+  - **NextSkill/NAVTTC** and **SMIT** are training, not professional experience or verified certificates.
 
 ---
 
@@ -27,8 +28,8 @@
 | Component | Local Directory | GitHub Repository | Live Production URL |
 | :--- | :--- | :--- | :--- |
 | **Portfolio** | `D:\Programming-Development\auto-sync-profiles\my-portfolio` | `MuhammadHussain2004/My-Portfolio` | [https://muhammadhussain2004.github.io/My-Portfolio/](https://muhammadhussain2004.github.io/My-Portfolio/) |
-| **Resume (Source)** | `D:\Programming-Development\auto-sync-profiles\my-resume` | `MuhammadHussain2004/resume` | [https://muhammadhussain2004.github.io/Muhammad-Hussain-Resume.pdf](https://muhammadhussain2004.github.io/Muhammad-Hussain-Resume.pdf) |
-| **Resume Multi-Sync** | `C:\Users\mhkpl\AppData\Local\ResumeSync\sync-resume.ps1` | N/A | Syncs to Laptop, OneDrive, Google Drive & `D:\general data` |
+| **Resume (Source)** | `D:\Programming-Development\auto-sync-profiles\my-resume` | `MuhammadHussain2004/resume` | [https://muhammadhussain2004.github.io/My-Portfolio/Muhammad-Hussain-Resume.pdf](https://muhammadhussain2004.github.io/My-Portfolio/Muhammad-Hussain-Resume.pdf) |
+| **Resume Multi-Sync** | `C:\Users\mhkpl\AppData\Local\ResumeSync\sync-resume.ps1` | N/A | Syncs local `D:\general data` and OneDrive copies; optional `G:` Drive mount when present. GitHub Actions uploads directly to Google Drive. |
 
 ---
 
@@ -40,7 +41,7 @@ The user's fundamental goal is **zero manual updates**. When Muhammad pushes new
    - Triggers: Push to `main`, manual `workflow_dispatch`, and daily cron at **03:30 UTC** (30 mins after `resume` repo's 03:00 UTC build to avoid race conditions).
 2. **Project Auto-Scoring & Showcase Generation** (`scripts/generate-projects.mjs`):
    - Queries GitHub API for all public repos.
-   - Detects full-stack architecture (probes top-level package.json files for frontend + backend + database + auth dependencies, checks recency and size).
+   - Uses the resume repository's shared code/tree/manifest-derived ranking for consistent top-six selection; falls back to local GitHub dependency scoring if shared analysis is unavailable.
    - Filters out tutorial/practice keywords (`learning`, `practice`, `tutorial`, `assignment`, `coursework`, etc.).
    - Selects top 6 projects automatically.
    - Takes headless automated screenshots via **Playwright** (`public/projects-auto/`) for live sites.
@@ -50,7 +51,7 @@ The user's fundamental goal is **zero manual updates**. When Muhammad pushes new
 4. **Narrative Content Adaptation via Gemini** (`scripts/sync-content.mjs`):
    - Fetches the latest LaTeX source `Muhammad_Hussain_Resume.tex` from GitHub.
    - Calls Google Gemini API (`GEMINI_API_KEY` GitHub secret) using structured JSON schema.
-   - Generates portfolio narrative copy: tagline, bio paragraphs, quick facts, skills categories, timeline items with certificate verification links, and contact heading.
+   - Generates portfolio narrative copy: tagline, bio paragraphs, quick facts, skills categories, timeline items with correctly labeled proof links, and contact heading. Training is shown under Certifications & Training, not work Experience.
    - Writes `src/generated/content.json`.
 5. **Safe-by-Design Resilience**:
    - Every script is designed with defensive fallbacks. If GitHub rate limits or Gemini API encounters issues, the existing committed fallback files in `src/generated/` and `public/` are preserved, and scripts exit cleanly (`exitCode = 0`). The build will never crash in CI.
@@ -70,6 +71,7 @@ The user's fundamental goal is **zero manual updates**. When Muhammad pushes new
 - **`full-stack-auth`**: Core authentication reference app.
 - **`students-Records-app`**: Next.js App Router, TypeScript, MongoDB, live metrics dashboard.
 - **`MuhammadHussain-mern-10pshine`**: **NoteFlow — 10Pearls Internship Project**.
+- **`nodemart`**: **NodeMart Product Marketplace (MERN)**, with owner-scoped product CRUD, Multer/Cloudinary uploads, search/filtering, and pagination.
 - **Explicitly Excluded Repos**:
   - `paradise-nursery`
   - `Wanderly-Travel-Recommendation`
@@ -82,9 +84,9 @@ The user's fundamental goal is **zero manual updates**. When Muhammad pushes new
 - **Brand Logo**: `<Hussain/>` with sleek modern coding aesthetic.
 - **Navigation**: Includes direct view and download actions for the auto-synced Resume PDF.
 - **Skills Grid**: Dynamic responsive CSS layout designed to gracefully auto-wrap and avoid empty trailing gaps when skill categories grow or shrink.
-- **Experience Timeline**: Directly integrates official verification links for 10Pearls and IBM/Coursera certificates.
+- **Experience Timeline**: Work/independent study/education only. The Certifications & Training cards show the IBM certificate and NextSkill/SMIT training separately.
 - **ATS Resume Standards**:
-  - The LaTeX resume follows strict 100% ATS score criteria: clean single-column structure, standard fonts, semantic sections (`Summary` → `Experience` → `Projects` → `Education` → `Certifications` → `Technical Skills`), and no unparseable formatting tables.
+  - The LaTeX resume aims for ATS-friendly text extraction: a clean single-column layout, semantic sections (`Summary` → `Experience` → `Projects` → `Education` → `Certifications` → `Technical Skills`), and a complete one-page PDF. No universal ATS score is guaranteed.
 
 ---
 
