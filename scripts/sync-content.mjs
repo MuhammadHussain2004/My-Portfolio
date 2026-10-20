@@ -164,7 +164,7 @@ async function callGemini(model, resumeTex, conversationHistory) {
   return null; // both api versions 404'd for this model
 }
 
-function validate(content) {
+function validate(content, resumeTex) {
   const required = ["tagline", "secondaryRoles", "bio", "quickFacts", "cgpaStat", "contactHeading", "skills", "timeline"];
   for (const key of required) {
     if (!(key in content)) throw new Error(`Missing "${key}" in Gemini response`);
@@ -172,15 +172,25 @@ function validate(content) {
   if (content.bio.length !== 2) throw new Error(`Expected exactly 2 bio paragraphs, got ${content.bio.length}`);
   if (content.skills.length < 3) throw new Error(`Suspiciously few skill categories: ${content.skills.length}`);
   if (content.timeline.length < 3) throw new Error(`Suspiciously few timeline entries: ${content.timeline.length}`);
+  const experienceSource = resumeTex.split("\\section{Experience}")[1]?.split("\\section{Projects}")[0] || "";
+  const credentialsSource = resumeTex.split("\\section{Certifications}")[1]?.split("\\section{Technical Skills}")[0] || "";
   const training = content.timeline.find((entry) => /NextSkill|NAVTTC/i.test(`${entry.title} ${entry.place}`));
-  const internship = content.timeline.find((entry) => /10Pearls_10Shine_Internship_Certificate\.pdf/i.test(entry.link || ""));
-  const ibm = content.timeline.find((entry) => /coursera\.org\/verify\/professional-cert\//i.test(entry.link || ""));
-  if (!training || training.tag !== "Training") throw new Error("NextSkill/NAVTTC entry must be Training");
-  if (!internship || internship.tag !== "Experience" || internship.linkLabel !== "Verify") {
-    throw new Error("10Pearls internship must be Experience with a Verify link");
+  const internship = content.timeline.find((entry) => /10Pearls/i.test(`${entry.title} ${entry.place}`));
+  const ibm = content.timeline.find((entry) => /IBM.*Full.Stack/i.test(entry.title || ""));
+  if (/NextSkill|NAVTTC/i.test(credentialsSource) && (!training || training.tag !== "Training")) {
+    throw new Error("NextSkill/NAVTTC entry must be Training");
   }
-  if (!ibm || ibm.tag !== "Certificate" || ibm.linkLabel !== "Certificate") {
-    throw new Error("IBM/Coursera credential must have a Certificate link");
+  if (/10Pearls/i.test(experienceSource) && (!internship || internship.tag !== "Experience")) {
+    throw new Error("10Pearls internship must be Experience");
+  }
+  if (/IBM.*Full.Stack/i.test(credentialsSource) && (!ibm || ibm.tag !== "Certificate")) {
+    throw new Error("IBM/Coursera credential must be a Certificate");
+  }
+  const sourceLinks = new Map([...resumeTex.matchAll(/\\href\{([^}]+)\}\{([^}]+)\}/g)].map((match) => [match[1], match[2]]));
+  for (const entry of content.timeline) {
+    if (entry.link && sourceLinks.get(entry.link) !== entry.linkLabel) {
+      throw new Error(`Proof link or label does not match the resume source: ${entry.link}`);
+    }
   }
   if (!/^\d(\.\d+)?\/\d(\.\d+)?$/.test(content.cgpaStat)) {
     throw new Error(`cgpaStat doesn't look like "X.X/X.X": ${content.cgpaStat}`);
@@ -227,7 +237,7 @@ async function main() {
   console.log(`Used Gemini model: ${usedModel}`);
 
   const content = JSON.parse(raw);
-  validate(content);
+  validate(content, resumeTex);
 
   writeFileSync(OUTPUT_JSON, JSON.stringify(content, null, 2) + "\n");
   console.log(`Wrote synced content to ${path.relative(ROOT, OUTPUT_JSON)}`);
