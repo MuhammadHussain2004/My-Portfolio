@@ -1,5 +1,22 @@
 [
   {
+    "slug": "complain-management-system-mern",
+    "title": "Smart Complaint Management System (MERN Stack)",
+    "description": "A role-based complaint-management platform: citizens file complaints, staff move them through a Pending → In Progress → Resolved/Rejected lifecycle, and admins approve accounts and oversee the queue — across 15 REST endpoints guarded by JWT auth and bcrypt password hashing.",
+    "image": "projects-auto/complain-management-system-mern.png",
+    "tags": [
+      "React",
+      "Vite",
+      "Express",
+      "MongoDB",
+      "Mongoose",
+      "JWT"
+    ],
+    "live": "https://scms-frontend-rho.vercel.app",
+    "code": "https://github.com/MuhammadHussain2004/Complain-Management-System-MERN",
+    "featured": true
+  },
+  {
     "slug": "muhammadhussain-mern-10pshine",
     "title": "NoteFlow — 10Pearls Internship Project",
     "description": "Built during my MERN Stack Development internship at 10Pearls (10Shine Program): a full-stack notes application with JWT authentication, email verification, and full CRUD, plus data import/export and user profile management.",
@@ -16,21 +33,23 @@
     "featured": true
   },
   {
-    "slug": "complain-management-system-mern",
-    "title": "Smart Complaint Management System (MERN Stack)",
-    "description": "A role-based complaint-management platform: citizens file complaints, staff move them through a Pending → In Progress → Resolved/Rejected lifecycle, and admins approve accounts and oversee the queue — across 15 REST endpoints guarded by JWT auth and bcrypt password hashing.",
-    "image": "projects-auto/complain-management-system-mern.png",
+    "slug": "nodemart",
+    "title": "NodeMart Product Marketplace (MERN)",
+    "description": "A full-stack product marketplace with JWT-authenticated accounts and owner-scoped product CRUD. Supports image uploads to Cloudinary, product search, price filters, sorting, and pagination, with React/Vite and an Express/MongoDB API deployed on Vercel.",
+    "image": "projects-auto/nodemart.png",
     "tags": [
       "React",
       "Vite",
       "Express",
       "MongoDB",
       "Mongoose",
-      "JWT"
+      "JWT",
+      "Multer",
+      "Cloudinary"
     ],
-    "live": "https://scms-frontend-rho.vercel.app",
-    "code": "https://github.com/MuhammadHussain2004/Complain-Management-System-MERN",
-    "featured": true
+    "live": "https://nodemart-frontend.vercel.app/",
+    "code": "https://github.com/MuhammadHussain2004/nodemart",
+    "featured": false
   },
   {
     "slug": "buildbot",
@@ -79,21 +98,6 @@
     ],
     "live": "https://studentsrecordsapp-teal.vercel.app",
     "code": "https://github.com/MuhammadHussain2004/students-Records-app",
-    "featured": false
-  },
-  {
-    "slug": "full-stack-auth",
-    "title": "Full-Stack Auth",
-    "description": "A self-contained authentication reference app: signup, login, JWT-protected profile routes, and persisted sessions — the pattern I reuse as the backbone for every app that needs real users.",
-    "image": "projects-auto/full-stack-auth.png",
-    "tags": [
-      "React",
-      "Vite",
-      "Express",
-      "JWT"
-    ],
-    "live": "https://fullstack-auth-delta.vercel.app/",
-    "code": "https://github.com/MuhammadHussain2004/full-stack-auth",
     "featured": false
   }
 ]

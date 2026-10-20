@@ -15,7 +15,7 @@
 - **Phone**: `+92 324 3249217`
 - **GitHub**: [https://github.com/MuhammadHussain2004](https://github.com/MuhammadHussain2004)
 - **LinkedIn**: [https://www.linkedin.com/in/muhammad-hussain-khan-lodhi-139261252](https://www.linkedin.com/in/muhammad-hussain-khan-lodhi-139261252)
-- **Education**: BS Computer Science (CGPA: 3.52)
+- **Education**: BS Computer Science (CGPA: 3.7/4.0)
 - **Key Verified Certifications**:
   - **10Pearls MERN Stack Development Internship** (10Shine program) — Certificate link integrated in timeline.
   - **IBM / Coursera Full Stack Software Developer Professional Certificate** (Coursera ID: `ACOM3SC87IX4`) — Verification link integrated in timeline.

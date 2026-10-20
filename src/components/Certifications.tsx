@@ -9,7 +9,7 @@ export default function Certifications() {
   return (
     <section id="certifications" className="border-t border-line-soft px-6 py-24 sm:px-10">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading index="05" kicker="Verified proof" title="Certifications" />
+        <SectionHeading index="05" kicker="Credentials and learning" title="Certifications & Training" />
         <div className="grid gap-4 md:grid-cols-2">
           {certifications.map((item, index) => (
             <Reveal key={`${item.title}-${item.period}`} delay={index * 0.08}>

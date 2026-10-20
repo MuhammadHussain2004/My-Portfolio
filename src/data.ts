@@ -62,9 +62,11 @@ export type TimelineItem = {
 
 export const timeline: TimelineItem[] = generatedContent.timeline;
 
-// Certificate/proof cards are derived from the resume-driven timeline so the
-// portfolio cannot drift when a verified link is added or removed in the
-// resume repository.
+// Training and certificates have their own section; they are not work
+// experience, and training without a proof link must not look verified.
+export const experienceTimeline = timeline.filter(
+  (item) => ["Experience", "Education", "Independent"].includes(item.tag),
+);
 export const certifications = timeline.filter(
-  (item) => item.tag === "Certificate" || item.linkLabel?.toLowerCase() === "certificate",
+  (item) => ["Certificate", "Training"].includes(item.tag),
 );

@@ -63,7 +63,8 @@
         "Socket.IO",
         "JWT Authentication",
         "CORS",
-        "File Uploads"
+        "File Uploads (Multer)",
+        "Cloudinary"
       ]
     },
     {
@@ -116,20 +117,13 @@
   ],
   "timeline": [
     {
-      "period": "Jun 2026 - Sep 2026",
-      "title": "Full Stack Development Trainee",
-      "place": "NextSkill Institute, Karachi, Pakistan",
-      "description": "I completed a NAVTTC-affiliated full-stack program following an IBM-aligned curriculum, advancing from web fundamentals to React-based applications. I built and version-controlled projects such as an expense tracker and a multi-page e-commerce platform using Git and GitHub.",
-      "tag": "Training"
-    },
-    {
       "period": "Apr 2026 - May 2026",
       "title": "MERN Stack Development Intern",
       "place": "10Pearls, Remote, Karachi",
       "description": "I designed and implemented the data model and REST API for a full-stack Notes application using React, Node.js, Express, and MySQL with JWT authentication and CRUD features. I also wrote unit and integration tests using Mocha and Chai, addressing code quality findings identified by SonarQube.",
       "tag": "Experience",
       "link": "https://github.com/MuhammadHussain2004/resume/blob/master/certificates/10Pearls_10Shine_Internship_Certificate.pdf",
-      "linkLabel": "Certificate"
+      "linkLabel": "Verify"
     },
     {
       "period": "Sep 2022 - Present",
@@ -152,7 +146,14 @@
       "description": "I earned a professional certification verifying comprehensive full-stack JavaScript application development proficiency.",
       "tag": "Certificate",
       "link": "https://coursera.org/verify/professional-cert/ACOM3SC87IX4",
-      "linkLabel": "Verify"
+      "linkLabel": "Certificate"
+    },
+    {
+      "period": "Jun 2026 - Sep 2026",
+      "title": "Full Stack Development Training (NAVTTC/IBM-aligned)",
+      "place": "NextSkill Institute, Karachi, Pakistan",
+      "description": "I completed HTML5, CSS3, JavaScript, and React training and built a portfolio, expense tracker, and multi-page e-commerce application using Git and GitHub.",
+      "tag": "Training"
     },
     {
       "period": "Mar 2026 - Present",

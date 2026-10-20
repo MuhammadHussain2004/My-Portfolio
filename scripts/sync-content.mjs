@@ -93,6 +93,7 @@ Rules:
 - "contactHeading": one short question inviting contact, matching the resume's professional framing (e.g. mentioning the primary role/specialization). No em dashes.
 - "skills": mirror the resume's own "Technical Skills" category structure and items as closely as possible — do not reorganize into different categories than the resume uses, do not drop or add categories, but you may rename a category to be more portfolio-friendly if the resume's label is very terse (e.g. keep "MERN / Full-Stack" style labels if present).
 - "timeline": one entry per Education, Certification, and Experience entry in the resume (skip "Self-Directed Learning" only if it has no concrete dates or evidence to build a real entry from). "tag" is a short 1-2 word label: "Education", "Certificate", "Training", "Experience", or "Independent". "description" is 1-2 sentences, first-person, based only on that resume entry's own bullet points. Order most-recent-first is fine but don't worry about perfect chronological sorting. The resume's .tex source contains \\href{URL}{label} commands (e.g. next to a certification or job title) — if an entry's heading line contains one, extract the URL into "link" and a short 1-2 word button label (e.g. "Verify", "Certificate") into "linkLabel"; omit both fields entirely for entries with no such link. Never invent a link that isn't literally present in the source.
+- Classify NextSkill/NAVTTC full-stack development and SMIT as Training, never work Experience or a verified Certificate. Classify 10Pearls internship as Experience. Preserve literal link labels from the resume: 10Pearls is "Verify" and IBM/Coursera is "Certificate".
 - Output ONLY raw JSON matching the given schema. No markdown fences, no commentary.`;
 
 async function resolveModel() {
@@ -171,6 +172,16 @@ function validate(content) {
   if (content.bio.length !== 2) throw new Error(`Expected exactly 2 bio paragraphs, got ${content.bio.length}`);
   if (content.skills.length < 3) throw new Error(`Suspiciously few skill categories: ${content.skills.length}`);
   if (content.timeline.length < 3) throw new Error(`Suspiciously few timeline entries: ${content.timeline.length}`);
+  const training = content.timeline.find((entry) => /NextSkill|NAVTTC/i.test(`${entry.title} ${entry.place}`));
+  const internship = content.timeline.find((entry) => /10Pearls_10Shine_Internship_Certificate\.pdf/i.test(entry.link || ""));
+  const ibm = content.timeline.find((entry) => /coursera\.org\/verify\/professional-cert\//i.test(entry.link || ""));
+  if (!training || training.tag !== "Training") throw new Error("NextSkill/NAVTTC entry must be Training");
+  if (!internship || internship.tag !== "Experience" || internship.linkLabel !== "Verify") {
+    throw new Error("10Pearls internship must be Experience with a Verify link");
+  }
+  if (!ibm || ibm.tag !== "Certificate" || ibm.linkLabel !== "Certificate") {
+    throw new Error("IBM/Coursera credential must have a Certificate link");
+  }
   if (!/^\d(\.\d+)?\/\d(\.\d+)?$/.test(content.cgpaStat)) {
     throw new Error(`cgpaStat doesn't look like "X.X/X.X": ${content.cgpaStat}`);
   }

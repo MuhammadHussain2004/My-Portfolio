@@ -1,7 +1,7 @@
 import { SquareArrowOutUpRight } from "lucide-react";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
-import { timeline } from "../data";
+import { experienceTimeline } from "../data";
 
 export default function Experience() {
   return (
@@ -12,7 +12,7 @@ export default function Experience() {
         <div className="relative">
           <div className="absolute left-[7px] top-2 bottom-2 w-px bg-line sm:left-[9px]" />
           <ul className="space-y-12">
-            {timeline.map((item, i) => (
+            {experienceTimeline.map((item, i) => (
               <Reveal key={item.title} delay={i * 0.08}>
                 <li className="relative pl-8 sm:pl-10">
                   <span className="absolute left-0 top-1.5 h-3.5 w-3.5 rounded-full border-2 border-accent bg-bg sm:h-[18px] sm:w-[18px]" />
